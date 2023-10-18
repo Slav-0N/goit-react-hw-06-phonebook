@@ -9,7 +9,6 @@ const Form = ({ createUser }) => {
   const number = useSelector(state => state.number);
 
   const dispatch = useDispatch();
-  // const [number, setNumber] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;

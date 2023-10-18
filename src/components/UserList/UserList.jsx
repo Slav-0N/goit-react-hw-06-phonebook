@@ -12,8 +12,6 @@ const UserList = () => {
   const dispatch = useDispatch();
 
   const contacts = useSelector(state => state.contacts);
-
-  // const [filter, setFilter] = useState('');
   const filter = useSelector(state => state.filter);
 
   useEffect(() => {
