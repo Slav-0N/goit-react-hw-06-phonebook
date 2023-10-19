@@ -3,7 +3,7 @@ import FindName from 'components/Find/find';
 import Form from 'components/Form/Form';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, deleteContact } from 'redux/createSliceContacts';
+import { deleteContact } from 'redux/createSliceContacts';
 
 import { getContacts, getFilter } from 'redux/selectors';
 

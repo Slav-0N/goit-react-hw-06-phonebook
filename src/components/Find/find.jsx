@@ -1,13 +1,13 @@
 import React from 'react';
 import FindSection from './Fnd.styled';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+// import {  getFilter } from 'redux/selectors';
 import { setFilter } from 'redux/createSliceFilter';
 
 const FindName = ({ changeFilterValue, value }) => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  // const filter = useSelector(getFilter);
 
   const handleChange = ({ target: { value } }) => {
     // Початок перенесення
