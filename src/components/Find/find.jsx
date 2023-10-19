@@ -1,9 +1,21 @@
 import React from 'react';
 import FindSection from './Fnd.styled';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts, getFilter } from 'redux/selectors';
+import { setFilter } from 'redux/createSliceFilter';
+
 const FindName = ({ changeFilterValue, value }) => {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
   const handleChange = ({ target: { value } }) => {
-    changeFilterValue(value);
+    // Початок перенесення
+    // changeFilterValue(value);
+
+    dispatch(setFilter(value));
+
+    // кінец перенесення
   };
   return (
     <FindSection>

@@ -1,23 +1,25 @@
+import { useState, useEffect } from 'react';
 import SectionForm from './Form.styled';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { addName } from 'redux/createSliceName';
-import { addNumber } from 'redux/createSliceNumber';
+import { getContacts, getFilter } from 'redux/selectors';
+import { nanoid } from 'nanoid';
+import { addContact, deleteContact } from 'redux/createSliceContacts';
 
 const Form = ({ createUser }) => {
-  const name = useSelector(state => state.name);
-  const number = useSelector(state => state.number);
-
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;
     switch (name) {
       case 'name':
-        dispatch(addName(value));
+        setName(value);
         break;
       case 'number':
-        dispatch(addNumber(value));
+        setNumber(value);
         break;
       default:
         return;
@@ -27,9 +29,21 @@ const Form = ({ createUser }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    createUser({ number, name });
-    dispatch(addName(''));
-    dispatch(addNumber(''));
+    const isExistContact = contacts.find(
+      el => el.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (isExistContact) return alert('Existing Contact');
+
+    const newUserElement = {
+      name: name,
+      number: number,
+      id: nanoid(),
+    };
+    dispatch(addContact(newUserElement));
+
+    setName('');
+    setNumber('');
   };
 
   return (
