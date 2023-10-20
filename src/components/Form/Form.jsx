@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import SectionForm from './Form.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { getContacts } from 'redux/selectors';
 import { nanoid } from 'nanoid';
-import { addContact, deleteContact } from 'redux/createSliceContacts';
+import { addContact } from 'redux/createSliceContacts';
 
 const Form = ({ createUser }) => {
   const contacts = useSelector(getContacts);
@@ -40,8 +40,8 @@ const Form = ({ createUser }) => {
       number: number,
       id: nanoid(),
     };
-    dispatch(addContact(newUserElement));
-
+    const newUserdata = () => dispatch(addContact(newUserElement));
+    newUserdata();
     setName('');
     setNumber('');
   };
