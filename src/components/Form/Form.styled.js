@@ -23,10 +23,11 @@ const SectionForm = styled.section`
   }
 
   button {
-   align-items: end;
-   font-size: 20px;
-   font-weight: 600;
-   margin-top: 30px;
-   color: #098B23;
+    align-items: end;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #098b23;
+  }
 `;
 export default SectionForm;

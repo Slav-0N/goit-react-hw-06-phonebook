@@ -18,7 +18,6 @@ const ContactItems = () => {
       return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };
-  console.log(getFilteredContacts().length > 0);
 
   return (
     <>
