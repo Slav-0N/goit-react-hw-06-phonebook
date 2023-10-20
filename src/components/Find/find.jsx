@@ -1,21 +1,16 @@
 import React from 'react';
 import FindSection from './Fnd.styled';
 
-import { useDispatch } from 'react-redux';
-// import {  getFilter } from 'redux/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilter } from 'redux/selectors';
 import { setFilter } from 'redux/createSliceFilter';
 
-const FindName = ({ changeFilterValue, value }) => {
+const FindName = () => {
   const dispatch = useDispatch();
-  // const filter = useSelector(getFilter);
+  const filter = useSelector(getFilter);
 
   const handleChange = ({ target: { value } }) => {
-    // Початок перенесення
-    // changeFilterValue(value);
-
     dispatch(setFilter(value));
-
-    // кінец перенесення
   };
   return (
     <FindSection>
@@ -27,7 +22,7 @@ const FindName = ({ changeFilterValue, value }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Search name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
-        value={value}
+        value={filter}
         onChange={handleChange}
       />
     </FindSection>
